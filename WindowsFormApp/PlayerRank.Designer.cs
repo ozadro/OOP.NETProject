@@ -52,7 +52,7 @@
             this.lbGoals.AutoSize = true;
             this.lbGoals.BackColor = System.Drawing.Color.Black;
             this.lbGoals.ForeColor = System.Drawing.Color.White;
-            this.lbGoals.Location = new System.Drawing.Point(86, 88);
+            this.lbGoals.Location = new System.Drawing.Point(61, 88);
             this.lbGoals.Name = "lbGoals";
             this.lbGoals.Size = new System.Drawing.Size(35, 13);
             this.lbGoals.TabIndex = 1;
@@ -63,7 +63,7 @@
             this.lbCards.AutoSize = true;
             this.lbCards.BackColor = System.Drawing.Color.Black;
             this.lbCards.ForeColor = System.Drawing.Color.White;
-            this.lbCards.Location = new System.Drawing.Point(86, 110);
+            this.lbCards.Location = new System.Drawing.Point(61, 110);
             this.lbCards.Name = "lbCards";
             this.lbCards.Size = new System.Drawing.Size(35, 13);
             this.lbCards.TabIndex = 2;

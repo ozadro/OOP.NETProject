@@ -274,6 +274,7 @@ namespace WindowsFormApp
             PlayerRankForm rankForm = new PlayerRankForm();
             rankForm.formPlayers = formPlayers;
             rankForm.code = code;
+            rankForm.option = option;
             rankForm.gender = gender;
             rankForm.ShowDialog();
         }
@@ -283,6 +284,7 @@ namespace WindowsFormApp
             GameRankForm rankForm = new GameRankForm();
             rankForm.code = code;
             rankForm.gender = gender;
+            rankForm.option = option;
             rankForm.ShowDialog();
         }
     }

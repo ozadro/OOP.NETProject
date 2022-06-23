@@ -5,7 +5,6 @@ namespace GLForma
 {
     public partial class PlayerRank : UserControl
     {
-        public string code;
         public string name;
         public string goals;
         public string cards;
@@ -27,9 +26,16 @@ namespace GLForma
             lbFullName.Text = name;
             lbCards.Text = cards;
             lbGoals.Text = goals;
+            if (countGoals == 0)
+            {
+                lbCountGoals.Text = "";
+            }
             lbCountGoals.Text = countGoals.ToString();
+            if (countCards == 0)
+            {
+                lbCountCards.Text = "";
+            }
             lbCountCards.Text = countCards.ToString();
-            //code = playerRankForm.code;
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 using Utility.Manager;
 using Utility.Model;
@@ -10,6 +13,7 @@ namespace GLForma
     {
         public string code;
         public string gender;
+        public string option;
         public IList<StartingEleven> formPlayers;
 
         public PlayerRankForm()
@@ -75,20 +79,29 @@ namespace GLForma
                 PlayerRank plr = new PlayerRank();
                 for (int i = 0; i < data.Count; i++)
                 {
-                    
+                    plr.goals = "goals:";
+                    plr.cards = "yellow-cards: ";
                     if (item.Name == data[i].Player)
                     {
                         exists = false;
                         plr.name = data[i].Player;
                         if (data[i].TypeOfEvent == "goal")
                         {
-                            plr.goals = data[i].TypeOfEvent;
+                            
                             plr.countGoals++;
                             
                         }
+                        else if(data[i].TypeOfEvent == "goal-own")
+                        {
+                            plr.countGoals++;
+                        }
+                        else if (data[i].TypeOfEvent == "goal-penalty")
+                        {
+                            plr.countGoals++;
+                        }
                         if (data[i].TypeOfEvent == "yellow-card")
                         {
-                            plr.cards = data[i].TypeOfEvent;
+                            
                             plr.countCards++;
                         }
 
@@ -98,7 +111,7 @@ namespace GLForma
                     {
                         plr.name = item.Name;
                     }
-
+                  
                    
                     
                 }
@@ -115,5 +128,71 @@ namespace GLForma
             return players;
         }
 
+
+        private void itemPrintPreview_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                printDocument.DefaultPageSettings.Landscape = true;
+                printPreviewDialog.Document = printDocument;
+
+                printPreviewDialog.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void itemPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                printDocument.DefaultPageSettings.Landscape = true;
+                printDocument.Print();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void flpRankPlayers_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) return;
+            OnRightClick(sender as Panel);
+        }
+        public void OnRightClick(object sender)
+        {
+
+
+            Panel pnl = sender as Panel;
+            Point locationOnForm = pnl.Parent.PointToScreen(pnl.Location);
+
+            cmPrint.Show(locationOnForm);
+
+        }
+
+        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+           
+                var graphics = e.Graphics;
+                var normalFont = new Font("Calibri", 22);
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                e.HasMorePages = false;
+           
+                Bitmap image = new Bitmap(flpRankPlayers.Width, flpRankPlayers.Height, flpRankPlayers.CreateGraphics());
+                flpRankPlayers.DrawToBitmap(image, new Rectangle(0, 0, flpRankPlayers.Width, flpRankPlayers.Height));
+                printDocument.DefaultPageSettings.Landscape = true;
+                RectangleF bounds = e.PageSettings.PrintableArea;
+                 bounds.Height = e.PageSettings.PrintableArea.Height;
+                 bounds.Width = e.PageSettings.PrintableArea.Width;
+                graphics.DrawImage(image, bounds.Left, bounds.Top, bounds.Height, bounds.Width);
+            
+            
+        }
     }
 }

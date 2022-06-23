@@ -178,7 +178,7 @@ namespace Utility.Manager
             return awayTeam;
         }
 
-        public async Task<IList<Match>> GetGameDataForTeam(string code)
+        public async Task<IList<Match>> GetGameDataMaleForTeam(string code)
         {
             ApiData match = new ApiData();
             IList<Match> allMatchData = new List<Match>();
@@ -314,6 +314,89 @@ namespace Utility.Manager
             }
 
             return teamEvents;
+
+        }
+
+
+        public async Task<IList<Team>> GetFemaleHomeTeam(string code)
+        {
+            ApiData match = new ApiData();
+            IList<Match> matches = new List<Match>();
+            IList<Team> homeTeam = new List<Team>();
+            var matchData = await match.GetAllFemaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                matches.Add(item);
+            }
+            if (matches[0].HomeTeam.Code == code)
+            {
+                foreach (var item in matches)
+                {
+                    homeTeam.Add(matches[0].HomeTeam);
+                }
+            }
+            else
+            {
+                foreach (var item in matches)
+                {
+                    homeTeam.Add(matches[0].AwayTeam);
+                }
+            }
+
+            return homeTeam;
+        }
+        public async Task<IList<Team>> GetFemaleAwayTeam(string code)
+        {
+            ApiData match = new ApiData();
+            IList<Match> matches = new List<Match>();
+            IList<Team> awayTeam = new List<Team>();
+            var matchData = await match.GetAllFemaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                matches.Add(item);
+            }
+            if (matches[0].HomeTeam.Code == code)
+            {
+                foreach (var item in matches)
+                {
+                    awayTeam.Add(matches[0].AwayTeam);
+                }
+            }
+            else
+            {
+                foreach (var item in matches)
+                {
+                    awayTeam.Add(matches[0].HomeTeam);
+                }
+            }
+
+            return awayTeam;
+        }
+
+        public async Task<IList<Match>> GetGameDataFemaleForTeam(string code)
+        {
+            ApiData match = new ApiData();
+            IList<Match> allMatchData = new List<Match>();
+            IList<Match> specificMatchData = new List<Match>();
+            var matchData = await match.GetAllFemaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                allMatchData.Add(item);
+            }
+
+            if (allMatchData[0].HomeTeam.Code == code)
+            {
+                allMatchData.ToList().ForEach(m => specificMatchData.Add(m));
+            }
+            else if (allMatchData[0].AwayTeam.Code == code)
+            {
+                allMatchData.ToList().ForEach(m => specificMatchData.Add(m));
+            }
+
+            return specificMatchData;
 
         }
 
