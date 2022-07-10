@@ -25,7 +25,7 @@ namespace GLForma
         {
             try
             {
-                LoadApiData();
+                FillWithData();
             }
             catch (Exception ex)
             {
@@ -34,6 +34,17 @@ namespace GLForma
             }
         }
 
+        public void FillWithData()
+        {
+            if (option == "Api")
+            {
+                LoadApiData();
+            }
+            else if (option == "Json")
+            {
+                MessageBox.Show("In progress");
+            }
+        }
 
         private async void LoadApiData()
         {
@@ -41,7 +52,7 @@ namespace GLForma
 
             PlayerRank plr = new PlayerRank();
 
-            if (gender == "Muški")
+            if (gender == "Muški" || gender == "Male")
             {
                 var maleEventData = await eventRecievedData.GetMaleTeamEvent(code);
                 var maleEvent = EventControlsList(maleEventData);
@@ -50,7 +61,7 @@ namespace GLForma
                     flpRankPlayers.Controls.Add(item);
                 }
             }
-            else if (gender == "Ženski")
+            else if (gender == "Ženski" || gender == "Female")
             {
                 var femaleEventData = await eventRecievedData.GetFemaleEvent(code);
                 var femaleEvenet = EventControlsList(femaleEventData);
@@ -111,9 +122,8 @@ namespace GLForma
                     {
                         plr.name = item.Name;
                     }
-                  
-                   
-                    
+
+
                 }
 
                 players.Add(plr);

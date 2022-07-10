@@ -5,14 +5,13 @@ using Utility.Dal;
 using Utility.Model;
 using Newtonsoft.Json;
 using System.IO;
-using System;
 
 namespace Utility.Manager
 {
     public class PlayersManager
     {
         public const string EXTENSION = ".txt";
-        public const string DIR = @"..\..\..\FavPlayers";
+        public const string DIR = @"..\..\..\SaveOption\FavPlayers";
         public const string PATH =  DIR+ @"\";
 
 
@@ -75,17 +74,33 @@ namespace Utility.Manager
 
             IList<StartingEleven> startingeleven = new List<StartingEleven>();
 
-                if (matches[0].HomeTeam.Code == code)
-                {
 
-                    matches[0].HomeTeamStatistics.StartingEleven.ToList().ForEach(player => startingeleven.Add(player));
+            foreach (var item in matches)
+            {
+                if (item.HomeTeam.Code == code)
+                {
+                    item.HomeTeamStatistics.StartingEleven.ToList().ForEach(p => startingeleven.Add(p));
 
                 }
                 else
                 {
-                    matches[0].AwayTeamStatistics.StartingEleven.ToList().ForEach(player => startingeleven.Add(player));
+                    item.AwayTeamStatistics.StartingEleven.ToList().ForEach(p => startingeleven.Add(p));
                 }
-            
+
+            }
+
+
+            //if (matches[0].HomeTeam.Code == code)
+            //{
+
+            //    matches[0].HomeTeamStatistics.StartingEleven.ToList().ForEach(player => startingeleven.Add(player));
+
+            //}
+            //else
+            //{
+            //    matches[0].AwayTeamStatistics.StartingEleven.ToList().ForEach(player => startingeleven.Add(player));
+            //}
+
 
 
             return startingeleven;
@@ -202,6 +217,122 @@ namespace Utility.Manager
             return specificMatchData;
 
         }
+
+
+        public async Task<IList<string>> GetAllMatchesForMaleTeam(string code)
+        {
+            ApiData match = new ApiData();
+            IList<Match> allMatchData = new List<Match>();
+            IList<string> allGamesData = new List<string>();
+
+            var matchData = await match.GetAllMaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                allMatchData.Add(item);
+            }
+
+            if (allMatchData[0].HomeTeam.Code == code)
+            {
+                
+               
+                    allGamesData.Add(allMatchData[0].AwayTeam.Code);
+
+               
+            }
+            else
+            {
+
+                allGamesData.Add(allMatchData[0].HomeTeam.Code);
+
+                
+            }
+            if (allMatchData[1].HomeTeam.Code == code)
+            {
+
+                allGamesData.Add(allMatchData[1].AwayTeam.Code);
+                
+            }
+            else
+            {
+
+                allGamesData.Add(allMatchData[1].HomeTeam.Code);
+
+                
+            }
+            if (allMatchData[2].HomeTeam.Code == code)
+            {
+                
+                    allGamesData.Add(allMatchData[2].AwayTeam.Code);
+                
+            }
+            else
+            {
+               
+                    allGamesData.Add(allMatchData[2].HomeTeam.Code);
+
+                
+            }
+
+            return allGamesData;
+        }
+
+        public async Task<IList<Match>> SpecificMaleMatchData(string code,string awayCode)
+        {
+            ApiData apiData = new ApiData();
+            IList<Match> match = new List<Match>();
+
+            var data = await apiData.GetAllMaleMatches(code);
+
+            for (int i = 0; i < data.Count(); i++)
+            {
+                if (data[i].HomeTeam.Code == code && data[i].AwayTeam.Code == awayCode)
+                {
+                    match.Add(data[i]);
+                }
+                else if (data[i].HomeTeam.Code == awayCode && data[i].AwayTeam.Code == code)
+                {
+                    match.Add(data[i]);
+                }
+            }
+            
+
+
+            return match;
+
+
+        }
+
+
+        public async Task<IList<OrderedTeam>> GetSpecificMaleTeamResoults(string code)
+        {
+
+            ApiData apiData = new ApiData();
+            IList<OrderedTeam> orderedTeams = new List<OrderedTeam>();
+            IList<OrderedTeam> specificTeam = new List<OrderedTeam>();
+            var data = await apiData.GetAllMaleTeamGroupsResults();
+
+            foreach (var item in data)
+            {
+                orderedTeams.Add(item);
+            }
+
+            foreach (var item in orderedTeams)
+            {
+                if (item.FifaCode == code)
+                {
+                    specificTeam.Add(item);
+                }
+            }
+
+
+
+            return specificTeam;
+            
+        }
+
+
+
 
 
         ///////////FEMALES////////////

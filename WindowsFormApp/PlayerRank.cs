@@ -10,6 +10,7 @@ namespace GLForma
         public string cards;
         public int countGoals;
         public int countCards;
+       
         public PlayerRankForm playerRankForm;
         public PlayerRank()
         {
@@ -26,16 +27,9 @@ namespace GLForma
             lbFullName.Text = name;
             lbCards.Text = cards;
             lbGoals.Text = goals;
-            if (countGoals == 0)
-            {
-                lbCountGoals.Text = "";
-            }
-            lbCountGoals.Text = countGoals.ToString();
-            if (countCards == 0)
-            {
-                lbCountCards.Text = "";
-            }
             lbCountCards.Text = countCards.ToString();
+            lbCountGoals.Text = countGoals.ToString();
+            
         }
     }
 }

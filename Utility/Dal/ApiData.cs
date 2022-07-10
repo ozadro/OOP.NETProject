@@ -162,44 +162,43 @@ namespace Utility.Dal
 
         }
 
+        ////***TeamGroupResults*****//////////
+        //Deserializer
+        public IList<OrderedTeam> GetDeserializatedGroupObject(IRestResponse<OrderedTeam> GroupRawData)
+        {
+            return JsonConvert.DeserializeObject<IList<OrderedTeam>>(GroupRawData.Content);
+        }
+        public Task<IRestResponse<OrderedTeam>> GetRawMaleTeamGroupsData()
+        {
+
+            var apiClient = new RestClient(ApiConstants.MTEAMRESULT);
+
+            return apiClient.ExecuteAsync<OrderedTeam>(new RestRequest());
+
+        }
+
+        public async Task<IList<OrderedTeam>> GetAllMaleTeamGroupsResults()
+        {
 
 
-        ///***TeamStats***/
-        //public IList<StartingEleven> GetDeserializatedPlayersObject(IRestResponse<StartingEleven> statsRawData)
-        //{
-        //    return JsonConvert.DeserializeObject<IList<StartingEleven>>(statsRawData.Content);
-        //}
-
-        ////MALE
-
-        //public Task<IRestResponse<StartingEleven>> GetRawMalePlayersData(string code)
-        //{
-        //    var apiClient = new RestClient(ApiConstants.MALEMATCHES + code);
-        //    return apiClient.ExecuteAsync<StartingEleven>(new RestRequest());
-
-        //}
-
-        //public async Task<IList<StartingEleven>> GetAllMalePlayers(string code)
-        //{
+            IList<OrderedTeam> teams = new List<OrderedTeam>();
+            var teamsRawData = await GetRawMaleTeamGroupsData();
+            var teamData = GetDeserializatedGroupObject(teamsRawData);
 
 
-        //    IList<StartingEleven> players = new List<StartingEleven>();
-        //    var playersRawData = await GetRawMalePlayersData(code);
-        //    var playersData = GetDeserializatedPlayersObject(playersRawData);
-           
-        //    // puni drop down list
-        //    foreach (StartingEleven player in playersData)
-        //    {
-        //        players.Add(player);
-        //    }
 
-        //    return players;
 
-           
-        
+            // puni drop down list
+            foreach (var team in teamData)
+            {
+                teams.Add(team);
+            }
 
-        //}
 
+
+            return teams;
+
+        }
 
 
 

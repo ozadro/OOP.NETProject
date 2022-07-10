@@ -46,7 +46,7 @@
             this.flpRankPlayers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpRankPlayers.Location = new System.Drawing.Point(0, 0);
             this.flpRankPlayers.Name = "flpRankPlayers";
-            this.flpRankPlayers.Size = new System.Drawing.Size(1424, 618);
+            this.flpRankPlayers.Size = new System.Drawing.Size(1412, 618);
             this.flpRankPlayers.TabIndex = 1;
             this.flpRankPlayers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.flpRankPlayers_MouseClick);
             // 
@@ -61,14 +61,14 @@
             // itemPrintPreview
             // 
             this.itemPrintPreview.Name = "itemPrintPreview";
-            this.itemPrintPreview.Size = new System.Drawing.Size(180, 22);
+            this.itemPrintPreview.Size = new System.Drawing.Size(172, 22);
             this.itemPrintPreview.Text = "Pregled prije ispisa";
             this.itemPrintPreview.Click += new System.EventHandler(this.itemPrintPreview_Click);
             // 
             // itemPrint
             // 
             this.itemPrint.Name = "itemPrint";
-            this.itemPrint.Size = new System.Drawing.Size(180, 22);
+            this.itemPrint.Size = new System.Drawing.Size(172, 22);
             this.itemPrint.Text = "Ispis";
             this.itemPrint.Click += new System.EventHandler(this.itemPrint_Click);
             // 
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 618);
+            this.ClientSize = new System.Drawing.Size(1412, 618);
             this.Controls.Add(this.flpRankPlayers);
             this.Name = "PlayerRankForm";
             this.Text = "Player Rank Form";

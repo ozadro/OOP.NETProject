@@ -125,7 +125,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ddlGenders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 79</value>
+    <value>176, 105</value>
   </data>
   <data name="ddlGenders.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 21</value>
@@ -145,33 +145,6 @@
   </data>
   <data name="&gt;&gt;ddlGenders.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="ddlLanguages.Items" xml:space="preserve">
-    <value>Hrvatski</value>
-  </data>
-  <data name="ddlLanguages.Items1" xml:space="preserve">
-    <value>Engleski</value>
-  </data>
-  <data name="ddlLanguages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 154</value>
-  </data>
-  <data name="ddlLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 21</value>
-  </data>
-  <data name="ddlLanguages.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ddlLanguages.Name" xml:space="preserve">
-    <value>ddlLanguages</value>
-  </data>
-  <data name="&gt;&gt;ddlLanguages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ddlLanguages.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ddlLanguages.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="btnChoose.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 267</value>
@@ -195,7 +168,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnChoose.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cbOption.Items" xml:space="preserve">
     <value>Api</value>
@@ -204,7 +177,7 @@
     <value>Json</value>
   </data>
   <data name="cbOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 117</value>
+    <value>176, 156</value>
   </data>
   <data name="cbOption.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 21</value>
@@ -222,6 +195,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbOption.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 296</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -233,7 +234,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>518, 387</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>

@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ddlLanguage.Items" xml:space="preserve">
-    <value>English</value>
+  <data name="ddlGenders.Items" xml:space="preserve">
+    <value>Male</value>
   </data>
-  <data name="ddlLanguage.Items1" xml:space="preserve">
-    <value>Croatian</value>
+  <data name="ddlGenders.Items1" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="btnChoose.Text" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

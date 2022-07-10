@@ -52,12 +52,15 @@
     <Compile Include="Constants\JsonConstants.cs" />
     <Compile Include="Dal\ApiData.cs" />
     <Compile Include="Dal\JsonData.cs" />
+    <Compile Include="Manager\SettingsManager.cs" />
+    <Compile Include="Manager\StatesManager.cs" />
     <Compile Include="Manager\PlayersManager.cs" />
     <Compile Include="Model\StartingEleven.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Model\Match.cs" />
     <Compile Include="Model\States.cs" />
     <Compile Include="Model\TeamEvent.cs" />
+    <Compile Include="Model\OrderedTeam.cs" />
     <Compile Include="Model\TeamStatistics.cs" />
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="WPFApp.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500" Loaded="Form_Loaded" SizeChanged="Window_SizeChanged" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="1">
+            <StackPanel>
+                <ComboBox x:Name="ddlGenders" Width="150" Height="20" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" >
+                    <System:String>Muški</System:String>
+                    <System:String>Ženski</System:String>
+                </ComboBox>
+                <ComboBox x:Name="ddlLanguages" Width="150" Height="20" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" >
+                    <System:String>en</System:String>
+                    <System:String>hr</System:String>
+                </ComboBox>
+                <ComboBox x:Name="ddlSettings" Grid.Row="1" Width="150" Margin="10" HorizontalAlignment="Center" VerticalAlignment="bottom" SelectionChanged="ddlSettings_SelectionChanged">
+                    <System:String>Fullscreen</System:String>
+                    <System:String>600x800</System:String>
+                    <System:String>300x500</System:String>
+                    <System:String>1000x700</System:String>
+                </ComboBox>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.Row="2">
+            <Button x:Name="btnNext" Height="20" Width="90" Grid.Row="2" Margin="30" Content="Odaberi" Click="BtnNext_Click"/>
+        </Viewbox>
+     
+
+
+
+    </Grid>
+</Window>

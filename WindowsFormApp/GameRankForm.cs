@@ -56,7 +56,7 @@ namespace GLForma
 
           
 
-            if (gender == "Muški")
+            if (gender == "Muški" || gender == "Male")
             {
                 var homeTeam = await playersRecievedData.GetMaleHomeTeam(code);
                 var awayTeam = await playersRecievedData.GetMaleAwayTeam(code);
@@ -67,7 +67,7 @@ namespace GLForma
                 lbLocation.Text = attendance[0].Location;
 
             }
-            else if (gender == "Ženski")
+            else if (gender == "Ženski" || gender == "Female")
             {
                 var homeTeam = await playersRecievedData.GetFemaleHomeTeam(code);
                 var awayTeam = await playersRecievedData.GetFemaleAwayTeam(code);

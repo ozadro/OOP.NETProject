@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ddlGenders = new System.Windows.Forms.ComboBox();
-            this.ddlLanguages = new System.Windows.Forms.ComboBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.cbOption = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ddlGenders
@@ -43,15 +43,7 @@
             resources.GetString("ddlGenders.Items1")});
             resources.ApplyResources(this.ddlGenders, "ddlGenders");
             this.ddlGenders.Name = "ddlGenders";
-            // 
-            // ddlLanguages
-            // 
-            this.ddlLanguages.FormattingEnabled = true;
-            this.ddlLanguages.Items.AddRange(new object[] {
-            resources.GetString("ddlLanguages.Items"),
-            resources.GetString("ddlLanguages.Items1")});
-            resources.ApplyResources(this.ddlLanguages, "ddlLanguages");
-            this.ddlLanguages.Name = "ddlLanguages";
+            this.ddlGenders.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddlGenders_KeyDown);
             // 
             // btnChoose
             // 
@@ -68,14 +60,22 @@
             resources.GetString("cbOption.Items1")});
             resources.ApplyResources(this.cbOption, "cbOption");
             this.cbOption.Name = "cbOption";
+            this.cbOption.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbOption_KeyDown);
+            // 
+            // btnSave
+            // 
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Name = "btnSave";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSave_MouseClick);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cbOption);
             this.Controls.Add(this.btnChoose);
-            this.Controls.Add(this.ddlLanguages);
             this.Controls.Add(this.ddlGenders);
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -86,8 +86,8 @@
         #endregion
 
         private System.Windows.Forms.ComboBox ddlGenders;
-        private System.Windows.Forms.ComboBox ddlLanguages;
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.ComboBox cbOption;
+        private System.Windows.Forms.Button btnSave;
     }
 }

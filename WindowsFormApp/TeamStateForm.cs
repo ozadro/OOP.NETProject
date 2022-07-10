@@ -1,14 +1,14 @@
-﻿using RestSharp.Extensions;
-using RestSharp;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Threading;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Utility.Model;
-using Utility.Constants;
 using Utility.Dal;
+using System.Globalization;
+using System.ComponentModel;
+using GLForma;
+using Utility.Manager;
+using Utility.Model;
+using System.Collections.Generic;
+using Utility.Constants;
 
 namespace WindowsFormApp
 {
@@ -16,25 +16,30 @@ namespace WindowsFormApp
     {
         public string gender;
         public string option;
+        public string language;
 
         public TeamStateForm()
         {
            
             InitializeComponent();
-           
+            
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
+
             try
             {
-                FillDdlWithData();
                 
+                FillDdlWithData();
+                SetKultura(language);
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
             }
+           
         }
 
        
@@ -44,26 +49,26 @@ namespace WindowsFormApp
         {
             
 
-            if (gender == "Muški") 
+            if (gender == "Muški" || gender == "Male") 
             {
                 if (option == "Api")
                 {
                     LoadApiMaleStates();
                 }
-                else
+                else if (option == "Json")
                 {
                     LoadJsonMaleStates();
                 }
                 
                
             }
-           else if (gender == "Ženski")
+           else if (gender == "Ženski" || gender == "Female")
             {
                 if (option == "Api")
                 {
                     LoadApiFemaleStates();
                 }
-                else
+                else if (option == "Json")
                 {
                     LoadJsonFemaleStates();
                 }
@@ -79,13 +84,32 @@ namespace WindowsFormApp
         public  void  LoadJsonMaleStates()
         {
             JsonData states = new JsonData();
-            var statesData =  states.GetAllOffMaleStates();
+            var statesData = states.GetAllOffMaleStates();
+
+           
 
 
             // puni drop down list
-            ddlStates.DataSource = statesData;
 
-            ddlStates.SelectedIndex = 0;
+             ddlStates.DataSource = statesData;
+
+
+            StatesManager statesManager = new StatesManager();
+            var data = statesManager.LoadStates(gender);
+            int index = ddlStates.FindString(data);
+            if (statesManager.FileExists(gender))
+            {
+
+                ddlStates.SelectedIndex = index;
+
+            }
+            else
+            {
+                ddlStates.SelectedIndex = 0;
+            }
+
+
+
         }
 
         public async void LoadApiMaleStates()
@@ -98,7 +122,20 @@ namespace WindowsFormApp
             // puni drop down list
             ddlStates.DataSource = statesData;
 
-            ddlStates.SelectedIndex = 0;
+            StatesManager statesManager = new StatesManager();
+            var data = statesManager.LoadStates(gender);
+            int index = ddlStates.FindString(data);
+            if (statesManager.FileExists(gender))
+            {
+               
+                ddlStates.SelectedIndex = index;
+
+            }
+            else
+            {
+                ddlStates.SelectedIndex = 0;
+            }
+
         }
 
         public  void LoadJsonFemaleStates()
@@ -109,8 +146,20 @@ namespace WindowsFormApp
 
             // puni drop down list
             ddlStates.DataSource = statesData;
+            StatesManager statesManager = new StatesManager();
+            var data = statesManager.LoadStates(gender);
+            int index = ddlStates.FindString(data);
+            if (statesManager.FileExists(gender))
+            {
+                
+                ddlStates.SelectedIndex = index;
 
-            ddlStates.SelectedIndex = 0;
+            }
+            else
+            {
+                ddlStates.SelectedIndex = 0;
+            }
+
         }
 
         public async void LoadApiFemaleStates()
@@ -122,54 +171,63 @@ namespace WindowsFormApp
 
             // puni drop down list
             ddlStates.DataSource = statesData;
+            StatesManager statesManager = new StatesManager();
+            var data = statesManager.LoadStates(gender);
+            int index = ddlStates.FindString(data);
+            if (statesManager.FileExists(gender))
+            {
+                
+                ddlStates.SelectedIndex = index;
 
-            ddlStates.SelectedIndex = 0;
+            }
+            else
+            {
+                ddlStates.SelectedIndex = 0;
+            }
+
+        }
+
+        private void SetKultura(string jezik)
+        {
+            var kultura = new CultureInfo(jezik);
+
+            Thread.CurrentThread.CurrentUICulture = kultura;
+            Thread.CurrentThread.CurrentCulture = kultura;
+            AzurirajUIInitializeComponent(kultura);
+
+
+
+        }
+        private void AzurirajUIInitializeComponent(CultureInfo kultura)
+        {
+            this.Controls.Clear();
+            InitializeComponent();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
            
-            if (gender == "Muški")
-            {
+     
 
                 TeamMatchesForm newForm = new TeamMatchesForm();
                 newForm.code = ddlStates.SelectedItem.ToString();
-                newForm.gender = "Muški";
-                if (option == "Api")
-                {
-                    newForm.option = "Api";
-                }
-                else
-                {
-                    newForm.option = "Json";
-                }
+                newForm.option = option;
+                newForm.gender = gender;
+                newForm.language = language;
                 newForm.ShowDialog();
 
-
-            }
-            else if (gender == "Ženski")
-            {
-
-                TeamMatchesForm newForm = new TeamMatchesForm();
-                newForm.code = ddlStates.SelectedItem.ToString();
-                if (option == "Api")
-                {
-                    newForm.option = "Api";
-                }
-                else
-                {
-                    newForm.option = "Json";
-                }
-                newForm.gender = "Ženski";
-                newForm.ShowDialog();
-
-            }
-
-
+            
         }
 
+        private void btnSave_MouseClick(object sender, MouseEventArgs e)
+        {
+            StatesManager statesManager = new StatesManager();
+            statesManager.SaveStates(ddlStates.SelectedItem.ToString(),gender);
+        }
 
-        
-
+        private void ddlStates_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
     }
 }

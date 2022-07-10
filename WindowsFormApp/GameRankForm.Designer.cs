@@ -48,7 +48,7 @@
             // 
             // pnlGame
             // 
-            this.pnlGame.BackgroundImage = global::GLForma.Properties.Resources.stadium;
+            this.pnlGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlGame.BackgroundImage")));
             this.pnlGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlGame.Controls.Add(this.lbLocation);
             this.pnlGame.Controls.Add(this.lbAttendance);
@@ -66,7 +66,7 @@
             this.lbLocation.AutoSize = true;
             this.lbLocation.BackColor = System.Drawing.Color.Transparent;
             this.lbLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbLocation.Location = new System.Drawing.Point(398, 450);
+            this.lbLocation.Location = new System.Drawing.Point(371, 448);
             this.lbLocation.Name = "lbLocation";
             this.lbLocation.Size = new System.Drawing.Size(129, 33);
             this.lbLocation.TabIndex = 3;

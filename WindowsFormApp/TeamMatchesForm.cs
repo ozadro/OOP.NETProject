@@ -1,7 +1,9 @@
 ﻿using GLForma;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using Utility.Manager;
 using Utility.Model;
@@ -14,6 +16,7 @@ namespace WindowsFormApp
         public string gender;
         public string option;
         public IList<StartingEleven> formPlayers;
+        public string language;
         public TeamMatchesForm()
         {
             InitializeComponent();
@@ -27,9 +30,10 @@ namespace WindowsFormApp
 
             try
             {
-
+                SetKultura(language);
                 FillTestWithData();
                 LoadFavPlayers();
+                
 
             }
             catch (Exception ex)
@@ -42,10 +46,26 @@ namespace WindowsFormApp
 
 
         }
+        private void SetKultura(string jezik)
+        {
+            var kultura = new CultureInfo(jezik);
 
+            Thread.CurrentThread.CurrentUICulture = kultura;
+            Thread.CurrentThread.CurrentCulture = kultura;
+            AzurirajUIInitializeComponent(kultura);
+
+
+
+        }
+        private void AzurirajUIInitializeComponent(CultureInfo kultura)
+        {
+            this.Controls.Clear();
+            InitializeComponent();
+
+        }
         private  void FillTestWithData()
         {
-            PlayersManager playersRecievedData = new PlayersManager();
+           
 
             Players plr = new Players();
 
@@ -67,7 +87,7 @@ namespace WindowsFormApp
 
             Players plr = new Players();
 
-            if (gender == "Muški")
+            if (gender == "Muški" || gender == "Male")
             {
                 var maleplayerdata = await playersRecievedData.GetMalePlayers(code);
                 var maleplayers = PlayersControlsList(maleplayerdata);
@@ -91,7 +111,7 @@ namespace WindowsFormApp
             Players plr = new Players();
            
 
-            if (gender == "Muški")
+            if (gender == "Muški" || gender == "Male")
             {
                 var maleplayerdata =  playersRecievedData.GetMaleOffPlayers(code);
                 var maleplayers = PlayersControlsList(maleplayerdata);
