@@ -13,6 +13,7 @@ C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\AwayTeamStatesWindow.g
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\MainWindow.g.cs
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\MatchResultWindow.g.cs
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\Player.g.cs
+C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\PlayerInfoWindow.g.cs
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\StartingElevenWindow.g.cs
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\StatesWindow.g.cs
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\TeamResultWindow.g.cs
@@ -23,6 +24,7 @@ C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\AwayTeamStatesWindow.b
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\MainWindow.baml
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\MatchResultWindow.baml
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\Player.baml
+C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\PlayerInfoWindow.baml
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\StartingElevenWindow.baml
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\StatesWindow.baml
 C:\Users\Korisnik\Desktop\OOP.NETPROJEKT\WPFApp\obj\Debug\TeamResultWindow.baml

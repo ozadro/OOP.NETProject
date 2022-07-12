@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFApp"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="400" d:DesignWidth="400" Loaded="Player_Loaded" Margin="0,0,10,10" MouseDoubleClick="UserControl_MouseDoubleClick">
 
     <UserControl.Background>
         <ImageBrush ImageSource="Resources/jersey.png"/>
@@ -21,10 +21,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="2">
-            <Label x:Name="lbName" Width="50" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="lbName" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="4" Foreground="#FF00FFE2"/>
         </Viewbox>
         <Viewbox Grid.Row="3">
-            <Label x:Name="lbNumber" Width="20" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="lbNumber" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="3" Foreground="#FF00FFE2"/>
         </Viewbox>
         
     </Grid>

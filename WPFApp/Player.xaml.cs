@@ -20,9 +20,40 @@ namespace WPFApp
     /// </summary>
     public partial class Player : UserControl
     {
+        public string name;
+        public long number;
+        public string code;
+        public string awayCode;
+        public string position;
+        public bool captain;
+        
+
+
         public Player()
         {
             InitializeComponent();
+        }
+
+        private void Player_Loaded(object sender, RoutedEventArgs e)
+        {
+            lbName.Content = name.ToString();
+            lbNumber.Content = number.ToString();
+        }
+
+        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PlayerInfoWindow newWindow = new PlayerInfoWindow()
+            {
+                code = code,
+                awayCode = awayCode,
+                name = name,
+                position = position,
+                captain = captain,
+                number = number
+
+            };
+            
+            newWindow.Show();
         }
     }
 }

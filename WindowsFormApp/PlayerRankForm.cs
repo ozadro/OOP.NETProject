@@ -74,7 +74,7 @@ namespace GLForma
         }
 
 
-        IList<PlayerRank> EventControlsList(IList<TeamEvent> data)
+      private IList<PlayerRank> EventControlsList(IList<TeamEvent> data)
         {
 
 

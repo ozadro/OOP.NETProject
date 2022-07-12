@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="StartingElevenWindow" Height="800" Width="800" >
+        Title="StartingElevenWindow" Height="800" Width="800" Loaded="Window_Loaded">
     <Window.Background>
         <ImageBrush ImageSource="Resources/stadium.png"/>
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -29,7 +30,32 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="3">
+            <StackPanel x:Name="pnlHomeGoalie"/>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5">
+            <StackPanel x:Name="pnlHomeDefense" Orientation="Horizontal"/>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5">
+            <StackPanel x:Name="pnlHomeMiddle" Orientation="Horizontal"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5">
+            <StackPanel x:Name="pnlHomeAttack" Orientation="Horizontal"/>
+        </Viewbox>
         
         
+           <Viewbox Grid.Column="3" Grid.Row="8">
+            <StackPanel x:Name="pnlAwayGoalie"/>
+        </Viewbox>
+        <Viewbox  Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="5">
+            <StackPanel x:Name="pnlAwayDefense" Orientation="Horizontal"/>
+        </Viewbox>
+        <Viewbox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5">
+            <StackPanel x:Name="pnlAwayMiddle" Orientation="Horizontal"/>
+        </Viewbox>
+        <Viewbox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5">
+            <StackPanel x:Name="pnlAwayAttack" Orientation="Horizontal"/>
+        </Viewbox>
+
     </Grid>
 </Window>

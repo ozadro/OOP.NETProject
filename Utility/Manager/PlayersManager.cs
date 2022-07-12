@@ -90,16 +90,7 @@ namespace Utility.Manager
             }
 
 
-            //if (matches[0].HomeTeam.Code == code)
-            //{
-
-            //    matches[0].HomeTeamStatistics.StartingEleven.ToList().ForEach(player => startingeleven.Add(player));
-
-            //}
-            //else
-            //{
-            //    matches[0].AwayTeamStatistics.StartingEleven.ToList().ForEach(player => startingeleven.Add(player));
-            //}
+         
 
 
 
@@ -329,6 +320,39 @@ namespace Utility.Manager
 
             return specificTeam;
             
+        }
+
+        public async Task<IList<TeamEvent>> GetMaleGameTeamEvent(string code,string awayCode)
+        {
+
+            ApiData match = new ApiData();
+            IList<Match> matches = new List<Match>();
+            IList<TeamEvent> teamEvents = new List<TeamEvent>();
+            var matchData = await match.GetAllMaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                matches.Add(item);
+            }
+
+            for (int i = 0; i < matchData.Count(); i++)
+            {
+                if (matches[i].HomeTeam.Code == code && matches[i].AwayTeam.Code == awayCode)
+                {
+                    matches[i].HomeTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                    matches[i].AwayTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                }
+                else if (matches[i].HomeTeam.Code == awayCode && matches[i].AwayTeam.Code == code)
+                {
+                    matches[i].AwayTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                    matches[i].HomeTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                }
+
+
+            }
+
+            return teamEvents;
+
         }
 
 

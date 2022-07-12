@@ -75,7 +75,16 @@ namespace WPFApp
                 Width = this.Width,
                 Height = this.Height
             };
-            newWindow.ShowDialog();
+
+            StartingElevenWindow newStartingWindow = new StartingElevenWindow
+            {
+                code = code,
+                awayCode=ddlStates.SelectedItem.ToString(),
+            };
+
+            newStartingWindow.Show();
+            newWindow.Show();
+           
 
         }
     }
