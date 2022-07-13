@@ -295,7 +295,7 @@ namespace Utility.Manager
         }
 
 
-        public async Task<IList<OrderedTeam>> GetSpecificMaleTeamResoults(string code)
+        public async Task<IList<OrderedTeam>> GetSpecificMaleTeamResults(string code)
         {
 
             ApiData apiData = new ApiData();
@@ -555,6 +555,149 @@ namespace Utility.Manager
 
         }
 
+        public async Task<IList<string>> GetAllMatchesForFemaleTeam(string code)
+        {
+            ApiData match = new ApiData();
+            IList<Match> allMatchData = new List<Match>();
+            IList<string> allGamesData = new List<string>();
+
+            var matchData = await match.GetAllFemaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                allMatchData.Add(item);
+            }
+
+            if (allMatchData[0].HomeTeam.Code == code)
+            {
+
+
+                allGamesData.Add(allMatchData[0].AwayTeam.Code);
+
+
+            }
+            else
+            {
+
+                allGamesData.Add(allMatchData[0].HomeTeam.Code);
+
+
+            }
+            if (allMatchData[1].HomeTeam.Code == code)
+            {
+
+                allGamesData.Add(allMatchData[1].AwayTeam.Code);
+
+            }
+            else
+            {
+
+                allGamesData.Add(allMatchData[1].HomeTeam.Code);
+
+
+            }
+            if (allMatchData[2].HomeTeam.Code == code)
+            {
+
+                allGamesData.Add(allMatchData[2].AwayTeam.Code);
+
+            }
+            else
+            {
+
+                allGamesData.Add(allMatchData[2].HomeTeam.Code);
+
+
+            }
+
+            return allGamesData;
+        }
+
+        public async Task<IList<Match>> SpecificFemaleMatchData(string code, string awayCode)
+        {
+            ApiData apiData = new ApiData();
+            IList<Match> match = new List<Match>();
+
+            var data = await apiData.GetAllFemaleMatches(code);
+
+            for (int i = 0; i < data.Count(); i++)
+            {
+                if (data[i].HomeTeam.Code == code && data[i].AwayTeam.Code == awayCode)
+                {
+                    match.Add(data[i]);
+                }
+                else if (data[i].HomeTeam.Code == awayCode && data[i].AwayTeam.Code == code)
+                {
+                    match.Add(data[i]);
+                }
+            }
+
+
+
+            return match;
+
+
+        }
+
+        public async Task<IList<OrderedTeam>> GetSpecificFemaleTeamResults(string code)
+        {
+
+            ApiData apiData = new ApiData();
+            IList<OrderedTeam> orderedTeams = new List<OrderedTeam>();
+            IList<OrderedTeam> specificTeam = new List<OrderedTeam>();
+            var data = await apiData.GetAllFemaleTeamGroupsResults();
+
+            foreach (var item in data)
+            {
+                orderedTeams.Add(item);
+            }
+
+            foreach (var item in orderedTeams)
+            {
+                if (item.FifaCode == code)
+                {
+                    specificTeam.Add(item);
+                }
+            }
+
+
+
+            return specificTeam;
+
+        }
+
+        public async Task<IList<TeamEvent>> GetFemaleGameTeamEvent(string code, string awayCode)
+        {
+
+            ApiData match = new ApiData();
+            IList<Match> matches = new List<Match>();
+            IList<TeamEvent> teamEvents = new List<TeamEvent>();
+            var matchData = await match.GetAllFemaleMatches(code);
+
+            foreach (var item in matchData)
+            {
+                matches.Add(item);
+            }
+
+            for (int i = 0; i < matchData.Count(); i++)
+            {
+                if (matches[i].HomeTeam.Code == code && matches[i].AwayTeam.Code == awayCode)
+                {
+                    matches[i].HomeTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                    matches[i].AwayTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                }
+                else if (matches[i].HomeTeam.Code == awayCode && matches[i].AwayTeam.Code == code)
+                {
+                    matches[i].AwayTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                    matches[i].HomeTeamEvents.ToList().ForEach(t => teamEvents.Add(t));
+                }
+
+
+            }
+
+            return teamEvents;
+
+        }
 
 
         ///////FILE SAVING//////////

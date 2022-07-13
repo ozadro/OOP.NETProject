@@ -4,18 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        xmlns:lang="clr-namespace:WPFApp.Properties"
         mc:Ignorable="d"
-        Title="AwayTeamStatesWindow" Height="250" Width="500" Loaded="AwayTeamStatesWindow_Loaded" SizeChanged="Window_SizeChanged" ResizeMode="NoResize">
+        Title="AwayTeamStatesWindow" Height="250" Width="500" Loaded="AwayTeamStatesWindow_Loaded" SizeChanged="Window_SizeChanged" ResizeMode="NoResize" Background="Tomato">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Viewbox>
-            <ComboBox Grid.Row="0"  x:Name="ddlStates" Width="200" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50,40,60,10"/>
+            <ComboBox Grid.Row="0"  x:Name="ddlStates" Width="200" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50,40,60,10" Background="Tomato"/>
         </Viewbox>
         <Viewbox Grid.Row="1">
-            <Button x:Name="btnChoose" Grid.Row="1" Width="90" Height="20" Content="Odaberi" HorizontalAlignment="Center" Click="BtnChoose_Click" Margin="30"/>
+            <Button x:Name="btnChoose" Grid.Row="1" Width="90" Height="20" Content="{x:Static lang:Resources.choose}" HorizontalAlignment="Center" Click="BtnChoose_Click" Margin="30"/>
         </Viewbox>
       
 

@@ -22,7 +22,7 @@ namespace WPFApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WPFApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WPFApp.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace WPFApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,22 +61,119 @@ namespace WPFApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Odaberi.
         /// </summary>
-        internal static System.Drawing.Bitmap jersey {
+        public static string choose {
             get {
-                object obj = ResourceManager.GetObject("jersey", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("choose", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Razlika: .
         /// </summary>
-        internal static System.Drawing.Bitmap stadium {
+        public static string difference {
             get {
-                object obj = ResourceManager.GetObject("stadium", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("difference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Golovi: .
+        /// </summary>
+        public static string goals {
+            get {
+                return ResourceManager.GetString("goals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gosti.
+        /// </summary>
+        public static string guests {
+            get {
+                return ResourceManager.GetString("guests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domaćin.
+        /// </summary>
+        public static string host {
+            get {
+                return ResourceManager.GetString("host", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Izgubljeno: .
+        /// </summary>
+        public static string lost {
+            get {
+                return ResourceManager.GetString("lost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odigrano: .
+        /// </summary>
+        public static string played {
+            get {
+                return ResourceManager.GetString("played", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zabijeno: .
+        /// </summary>
+        public static string scored {
+            get {
+                return ResourceManager.GetString("scored", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primljeno: .
+        /// </summary>
+        public static string taken {
+            get {
+                return ResourceManager.GetString("taken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neodluceno: .
+        /// </summary>
+        public static string undecided {
+            get {
+                return ResourceManager.GetString("undecided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pobjednik: .
+        /// </summary>
+        public static string winner {
+            get {
+                return ResourceManager.GetString("winner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pobjede: .
+        /// </summary>
+        public static string won {
+            get {
+                return ResourceManager.GetString("won", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žuti kartoni: .
+        /// </summary>
+        public static string yellowcards {
+            get {
+                return ResourceManager.GetString("yellowcards", resourceCulture);
             }
         }
     }

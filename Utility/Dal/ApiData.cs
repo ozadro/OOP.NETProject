@@ -168,6 +168,7 @@ namespace Utility.Dal
         {
             return JsonConvert.DeserializeObject<IList<OrderedTeam>>(GroupRawData.Content);
         }
+
         public Task<IRestResponse<OrderedTeam>> GetRawMaleTeamGroupsData()
         {
 
@@ -199,6 +200,41 @@ namespace Utility.Dal
             return teams;
 
         }
+
+
+
+        public Task<IRestResponse<OrderedTeam>> GetRawFemaleTeamGroupsData()
+        {
+
+            var apiClient = new RestClient(ApiConstants.FTEAMRESULT);
+
+            return apiClient.ExecuteAsync<OrderedTeam>(new RestRequest());
+
+        }
+
+        public async Task<IList<OrderedTeam>> GetAllFemaleTeamGroupsResults()
+        {
+
+
+            IList<OrderedTeam> teams = new List<OrderedTeam>();
+            var teamsRawData = await GetRawFemaleTeamGroupsData();
+            var teamData = GetDeserializatedGroupObject(teamsRawData);
+
+
+
+
+            // puni drop down list
+            foreach (var team in teamData)
+            {
+                teams.Add(team);
+            }
+
+
+
+            return teams;
+
+        }
+
 
 
 

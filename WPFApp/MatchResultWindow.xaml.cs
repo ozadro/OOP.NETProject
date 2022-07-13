@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Utility.Manager;
 
 namespace WPFApp
@@ -22,6 +11,8 @@ namespace WPFApp
     {
         public string code;
         public string awayCode;
+        public string language;
+        public string gender;
         public MatchResultWindow()
         {
             InitializeComponent();
@@ -44,7 +35,20 @@ namespace WPFApp
 
         }
 
-        private async void FillFormWithData()
+        private void FillFormWithData()
+        {
+            if (gender == "Muški")
+            {
+                LoadMaleMatchResult();
+            }
+            else if (gender == "Ženski")
+            {
+                LoadFemaleMatchResult();
+            }
+
+        }
+
+       public async void LoadMaleMatchResult()
         {
             PlayersManager playersManager = new PlayersManager();
 
@@ -66,22 +70,42 @@ namespace WPFApp
                     lbhomeTeam.Content = item.AwayTeamCountry;
                     lbhomeTeamGoals.Content = item.AwayTeam.Goals;
                 }
-                lbWinner.Text  = "WINNER: " + item.Winner.ToString();
+                lbWinner.Text = Properties.Resources.winner + item.Winner.ToString();
             }
-            
-
-            
-
         }
 
-       
+        public async void LoadFemaleMatchResult()
+        {
+            PlayersManager playersManager = new PlayersManager();
 
+            var data = await playersManager.SpecificFemaleMatchData(code, awayCode);
+
+            foreach (var item in data)
+            {
+                if (item.AwayTeam.Code == awayCode)
+                {
+                    lbawayTeam.Content = item.AwayTeamCountry;
+                    lbawayTeamGoals.Content = item.AwayTeam.Goals;
+                    lbhomeTeam.Content = item.HomeTeamCountry;
+                    lbhomeTeamGoals.Content = item.HomeTeam.Goals;
+                }
+                else
+                {
+                    lbawayTeam.Content = item.HomeTeamCountry;
+                    lbawayTeamGoals.Content = item.HomeTeam.Goals;
+                    lbhomeTeam.Content = item.AwayTeamCountry;
+                    lbhomeTeamGoals.Content = item.AwayTeam.Goals;
+                }
+                lbWinner.Text = Properties.Resources.winner + item.Winner.ToString();
+            }
+        }
         private void BtnAwayTeam_Click(object sender, RoutedEventArgs e)
         {
             TeamResultWindow newWindow = new TeamResultWindow();
             newWindow.Height = this.Height;
             newWindow.Width = this.Width;
             newWindow.code = awayCode;
+            newWindow.gender = gender;
             newWindow.Show();
         }
 
@@ -91,6 +115,7 @@ namespace WPFApp
             newWindow.Height = this.Height;
             newWindow.Width = this.Width;
             newWindow.code = code;
+            newWindow.gender = gender;
             newWindow.Show();
 
         }

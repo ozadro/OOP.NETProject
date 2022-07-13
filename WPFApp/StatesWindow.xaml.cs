@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,13 +23,15 @@ namespace WPFApp
     public partial class StatesWindow : Window
     {
         public string gender;
-        public string language;
         public double height;
         public double width;
+        public string language;
         
-        public StatesWindow()
+        public StatesWindow(string language)
         {
+            SetKultura(language);
             InitializeComponent();
+           
         }
 
         private void StatesWindow_Loaded(object sender, RoutedEventArgs e)
@@ -36,6 +40,8 @@ namespace WPFApp
 
             try
             {
+
+                
                 FillDdlWithData();
                
                 
@@ -103,7 +109,15 @@ namespace WPFApp
 
             ddlStates.SelectedIndex = 0;
         }
+        private void SetKultura(string kultura)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(kultura);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(kultura);
 
+           
+        }
+      
+        
         public async void LoadApiFemaleStates()
         {
 
@@ -126,10 +140,12 @@ namespace WPFApp
         private void btnChoose_Click(object sender, RoutedEventArgs e)
         {
             AwayTeamStatesWindow newWindow = new AwayTeamStatesWindow();
-            newWindow.code = ddlStates.SelectedItem.ToString();
+            newWindow.code = ddlStates.Text;
             newWindow.Height = this.Height;
             newWindow.Width = this.Width;
+            newWindow.gender = gender;
             newWindow.ShowDialog();
+            this.Close();
 
         }
     }

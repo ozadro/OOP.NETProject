@@ -26,6 +26,7 @@ namespace WPFApp
         public string awayCode;
         public string position;
         public bool captain;
+        public string gender;
         
 
 
@@ -49,6 +50,7 @@ namespace WPFApp
                 name = name,
                 position = position,
                 captain = captain,
+                gender = gender,
                 number = number
 
             };

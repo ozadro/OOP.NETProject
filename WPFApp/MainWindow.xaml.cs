@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPFApp
 {
@@ -20,7 +8,7 @@ namespace WPFApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
+      
         public MainWindow()
         {
             InitializeComponent();
@@ -32,39 +20,44 @@ namespace WPFApp
             ddlGenders.SelectedIndex = 0;
             this.Left = (SystemParameters.WorkArea.Width - Width) / 2 + SystemParameters.WorkArea.Left;
             this.Top = (SystemParameters.WorkArea.Height - Height) / 2 + SystemParameters.WorkArea.Top;
+           
 
         }
-
+       
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (ddlGenders.SelectedItem.ToString() == "Muški" || ddlGenders.SelectedItem.ToString() == "Male")
+            
+            if (ddlGenders.Text == "Muški")
             {
 
-                StatesWindow newForm = new StatesWindow();
+                StatesWindow newForm = new StatesWindow(ddlLanguages.Text);
                 newForm.gender = "Muški";
                 //settings
-                newForm.language = ddlLanguages.SelectedItem.ToString();
                 newForm.Width = this.Width;
                 newForm.Height = this.Height;
                 newForm.Show();
+                this.Close();
+
 
 
 
             }
-            else if (ddlGenders.SelectedItem.ToString() == "Ženski" || ddlGenders.SelectedItem.ToString() == "Female")
+            else if (ddlGenders.Text == "Ženski")
             {
 
-                StatesWindow newForm = new StatesWindow();
+                StatesWindow newForm = new StatesWindow(ddlLanguages.Text);
                 newForm.gender = "Ženski";
                 //settings
-                newForm.language = ddlLanguages.SelectedItem.ToString();
                 newForm.Width = this.Width;
                 newForm.Height = this.Height;
                 newForm.Show();
+                this.Close();
 
             }
 
         }
+
+      
 
         private void ddlSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

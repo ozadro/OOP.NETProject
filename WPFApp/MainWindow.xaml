@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        xmlns:lang="clr-namespace:WPFApp.Properties"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="WPFApp.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500" Loaded="Form_Loaded" SizeChanged="Window_SizeChanged" ResizeMode="NoResize">
+        Title="MainWindow" Height="450" Width="500" Loaded="Form_Loaded" SizeChanged="Window_SizeChanged" ResizeMode="NoResize" Background="Tomato">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,7 +20,7 @@
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="1">
             <StackPanel>
-                <ComboBox x:Name="ddlGenders" Width="150" Height="20" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" >
+                <ComboBox x:Name="ddlGenders" Width="150" Height="20" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
                     <System:String>Muški</System:String>
                     <System:String>Ženski</System:String>
                 </ComboBox>

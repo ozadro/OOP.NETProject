@@ -4,8 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        xmlns:lang="clr-namespace:WPFApp.Properties"
         mc:Ignorable="d"
-        Title="TeamResultWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="TeamResultWindow" Height="450" Width="800" Loaded="Window_Loaded" Background="Tomato">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard Duration="00:00:5" Storyboard.TargetProperty="Opacity">
+                    <DoubleAnimation From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,7 +26,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-           
         </Grid.ColumnDefinitions>
 
         <Viewbox>

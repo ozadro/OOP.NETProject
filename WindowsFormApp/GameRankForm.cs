@@ -115,13 +115,13 @@ namespace GLForma
         {
             
             var graphics = e.Graphics;
-            var normalFont = new Font("Calibri", 22);
+           
             graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.HasMorePages = false;
             Bitmap image = new Bitmap(pnlGame.Width, pnlGame.Height, pnlGame.CreateGraphics());
             pnlGame.DrawToBitmap(image, new Rectangle(0, 0, pnlGame.Width, pnlGame.Height));
             RectangleF bounds = e.PageSettings.PrintableArea;
-            float factor = (image.Height / image.Width);
+           
 
             graphics.DrawImage(image, bounds.Left, bounds.Top ,bounds.Width, bounds.Height);
            

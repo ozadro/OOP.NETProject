@@ -10,6 +10,7 @@ namespace Utility.Constants
     {
         public const string FTEAMS = "http://worldcup.sfg.io/teams";
         public const string FEMALEMATCHES = "http://worldcup.sfg.io/matches/country?fifa_code=";
+        public const string FTEAMRESULT = "http://worldcup.sfg.io/teams/results";
 
         public const string MTEAMRESULT = "https://world-cup-json-2018.herokuapp.com/teams/results";
         public const string MTEAMS = "http://world-cup-json-2018.herokuapp.com/teams/";

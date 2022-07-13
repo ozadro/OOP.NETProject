@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        xmlns:lang="clr-namespace:WPFApp.Properties"
         mc:Ignorable="d"
-        Title="Match Results" Height="300" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Match Results" Height="300" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize" Background="Tomato">
+  
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3.5*"/>
@@ -21,7 +23,7 @@
         </Grid.RowDefinitions>
         <Viewbox Grid.Column="1" Grid.ColumnSpan="3">
             <StackPanel>
-                <TextBox x:Name="lbWinner" TextWrapping="Wrap" Width="100" Height="40" BorderThickness="0" IsReadOnly="True"/>
+                <TextBox  x:Name="lbWinner" Background="Tomato" TextWrapping="Wrap" Width="100" Height="40" BorderThickness="0" IsReadOnly="True"/>
             </StackPanel>
         </Viewbox>
         <Viewbox  Grid.Row="1" Stretch="Uniform">
@@ -44,11 +46,11 @@
         </Viewbox>
 
         <Viewbox Grid.Row="2">
-            <Button x:Name="btnHomeTeam" Width="90" Height="20" Content="Domaćin" HorizontalAlignment="Center" Margin="20" Click="BtnHomeTeam_Click"/>
+            <Button x:Name="btnHomeTeam" Width="90" Height="20" Content="{x:Static lang:Resources.host}" HorizontalAlignment="Center" Margin="20" Click="BtnHomeTeam_Click"/>
         </Viewbox>
 
         <Viewbox Grid.Row="2" Grid.Column="5">
-            <Button x:Name="btnAwayTeam" Width="90" Height="20" Content="Gosti" HorizontalAlignment="Center" Margin="20" Click="BtnAwayTeam_Click"/>
+            <Button x:Name="btnAwayTeam" Width="90" Height="20" Content="{x:Static lang:Resources.guests}" HorizontalAlignment="Center" Margin="20" Click="BtnAwayTeam_Click"/>
         </Viewbox>
 
     </Grid>
